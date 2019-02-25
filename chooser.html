@@ -2,29 +2,102 @@
 
 <html>
     <head>
-    	<script type="text/javascript">
-			function randChoose(list) {
-				idx = Math.floor(Math.random() * (list.length) );
-				return list[idx];
-			}
+        <script type="text/javascript">
+            function randChoose(list) {
+                idx = Math.floor(Math.random() * (list.length) );
+                return list[idx];
+            }
 
-    		function choose() {
-    			str = document.getElementById("item_list").value;
-    			items = str.split(/s*,s*/);
-    			choice = randChoose(items);
-    			document.getElementById("result").innerText = choice;
-    		}
-    	</script>
+            function choose() {
+                str = document.getElementById("item_list").value;
+                items = str.split(/[s\n]*,[s\n]*/);
+                choice = randChoose(items);
+                document.getElementById("result").innerText = choice;
+            }
+        </script>
+
+        <style type="text/css">
+            body {
+                --light: #8dfdff;
+                --medium: #48b8ba;
+                --dark: #07909f;
+                --border-radius: 15px;
+            }
+
+            body {
+                background-color: var(--light);
+            }
+
+            body * {
+                font-size: 5vw;
+            }
+
+            div#list {
+                background-color: var(--medium);
+            }
+
+            input#choose_button {
+                background-color: var(--dark);
+                border: none;
+            }
+
+            input#choose_button:hover {
+                background-color: var(--medium);
+                cursor: pointer;
+            }
+
+            div#result {
+                background-color: var(--dark);
+            }
+
+            div.box {
+                padding: var(--border-radius);
+            }
+
+            div.box:first-child {
+                border-radius: var(--border-radius) var(--border-radius) 0px 0px;
+            }
+
+            div.box:last-child {
+                border-radius: 0px 0px var(--border-radius) var(--border-radius);
+            }
+
+            textarea {
+                margin-top: 10px;
+            }
+
+
+
+            body {
+                display: flex;
+                flex-flow: column nowrap;
+                align-items: stretch;
+                margin: 0;
+            }
+
+            body > * {
+                flex: 0 1 0;
+            }
+
+            div#container {
+                width: inherit;
+                padding: 50px;
+            }
+        </style>
     </head>
 
     <body>
-    	<div id="list">
-    		<label for="item_list">Item List</label>
-    		<input type="button" id="choose_button" value="Choose One" onclick="choose();" />
-    		<br/>
-    		<textarea type="text" id="item_list" rows="10" cols="30" autofocus>item 1, item 2,
-item 3, item 4</textarea>
-    	</div>
-    	<div id="result"></div>
+        <div id="container">
+            <div id="list" class="box">
+                <label for="item_list">Item List</label>
+                <input type="button" id="choose_button" value="Choose One" onclick="choose();" />
+                <br/>
+                <textarea type="text" id="item_list" rows="5" cols="30" autofocus>item 1,
+item 2,
+item 3,
+item 4</textarea>
+            </div>
+            <div id="result" class="box"><i>item here</i></div>
+        </div>
     </body>
 </html>
