@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+    	<script type="text/javascript">
+			function randChoose(list) {
+				idx = Math.floor(Math.random() * (list.length) );
+				return list[idx];
+			}
+
+    		function choose() {
+    			str = document.getElementById("item_list").value;
+    			items = str.split(/s*,s*/);
+    			choice = randChoose(items);
+    			document.getElementById("result").innerText = choice;
+    		}
+    	</script>
+    </head>
+
+    <body>
+    	<div id="list">
+    		<label for="item_list">Item List</label>
+    		<input type="button" id="choose_button" value="Choose One" onclick="choose();" />
+    		<br/>
+    		<textarea type="text" id="item_list" rows="10" cols="30" autofocus>item 1, item 2,
+item 3, item 4</textarea>
+    	</div>
+    	<div id="result"></div>
+    </body>
+</html>
